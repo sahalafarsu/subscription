@@ -1,0 +1,43 @@
+
+{% extends 'membership/base.html' %}
+{% block content %}
+<div class="container">
+  {% if cancel_at_period_end %}
+  Your membership will run to the end of your billing cycle.
+  {% elif membership %}
+  <form action="{% url 'settings' %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Cancel Membership?">
+  </form>
+  <br><br>
+<a href="{% url 'pause' %}">pause</a>
+  <br><br>
+  <a href="{% url 'resume' %}">resume</a>
+  <br><br>
+    <a href="{% url 'delete' %}">delete</a>
+   <br><br>
+    <a href="{% url 'update' %}">update</a>
+
+
+
+
+
+  {% else %}
+  <a href="{% url 'join' %}">Get a membership</a><br><br>
+<!--  <a href="{% url 'pause' %}">pause</a>-->
+
+  {% endif %}
+</div>
+{% endblock %}
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
